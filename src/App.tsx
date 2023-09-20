@@ -1,12 +1,17 @@
 import React from 'react';
-import { Counter } from './Components/Counter';
+import { Route, Routes } from 'react-router-dom';
+
+import { AboutPage } from './pages/AboutPage';
+import { MainPage } from './pages/MainPage';
 import './index.scss';
 
 const App = () => {
     return (
         <div className='app'>
-            324234234324
-            <Counter />
+            <Routes>
+                <Route path={'/about'} element={<AboutPage />} />
+                <Route path={'/'} element={<MainPage />} />
+            </Routes>
         </div>
     );
 };
