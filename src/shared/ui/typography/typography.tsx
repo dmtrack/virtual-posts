@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import { FC, ReactNode } from 'react';
-import { type Colors } from '../types';
+import { type Colors } from '../../types';
 import styles from './typography.module.scss';
 import colors from '../../styles/colors.module.scss';
 

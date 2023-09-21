@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
 import styles from './button.module.scss';
 import colors from '../../styles/colors.module.scss';
-import { type Colors } from '../types';
+import { type Colors } from '../../types';
 
 type ButtonType = 'tertiary' | 'danger' | 'secondary' | 'primary';
 
