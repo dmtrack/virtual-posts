@@ -12,14 +12,20 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@faker-js/faker": "^8.1.0",
         "@types/react": "^17.0.39",
         "@types/react-dom": "^17.0.11",
         "@types/react-router-dom": "^5.3.3",
+        "@types/react-virtualized": "^9.21.22",
+        "@types/react-virtualized-auto-sizer": "^1.0.1",
+        "@types/react-window": "^1.8.5",
+        "@types/react-window-infinite-loader": "^1.0.6",
         "@types/webpack": "^5.28.0",
         "@types/webpack-dev-server": "^4.7.2",
         "css-loader": "^6.6.0",
         "html-webpack-plugin": "^5.5.0",
         "mini-css-extract-plugin": "^2.5.3",
+        "react-window": "^1.8.9",
         "sass": "^1.49.9",
         "sass-loader": "^12.6.0",
         "style-loader": "^3.3.1",
@@ -33,9 +39,12 @@
     "dependencies": {
         "@reduxjs/toolkit": "^1.9.5",
         "axios": "^1.5.0",
-        "clsx": "^2.0.0",
+        "classnames": "^2.3.2",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
-        "react-router-dom": "^6.2.1"
+        "react-redux": "^8.1.2",
+        "react-router-dom": "^6.2.1",
+        "react-virtualized": "^9.22.5",
+        "react-window-infinite-loader": "^1.0.9"
     }
 }

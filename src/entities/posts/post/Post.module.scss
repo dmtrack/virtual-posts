@@ -1,0 +1,37 @@
+@import '../../../app/styles/_variables';
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+}
+
+.title {
+    display: flex;
+    font-size: $font-size-s;
+    justify-content: space-between;
+    margin-top: 25px;
+    margin-right: 40px;
+    margin-left: 40px;
+    font-family: 'Montserrat';
+}
+
+.text {
+    color: $color-black;
+    font-size: $font-size-xs;
+    line-height: $line-height-s;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    font-family: 'Montserrat';
+}
+
+button {
+    margin-bottom: 25px;
+    margin-right: 40px;
+    margin-left: 40px;
+}

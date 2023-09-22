@@ -1,14 +1,12 @@
 import { Suspense } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
-import './index.scss';
-
+import { Route, Routes } from 'react-router-dom';
+import '../src/app/styles/reset.scss';
+import '../src/app/styles/globals.scss';
 import { MainPageAsync, PostPageAsync } from './pages';
 
 const App = () => {
     return (
-        <div className='app'>
-            <Link to={'/'}>Главная</Link>
-            <Link to={'/posts/123'}>К посту 123</Link>
+        <div>
             <Suspense fallback={<div>Loading...</div>}>
                 <Routes>
                     <Route path={'/'} element={<MainPageAsync />} />

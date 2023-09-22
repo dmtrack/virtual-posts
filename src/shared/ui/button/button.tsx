@@ -1,57 +1,41 @@
-import { clsx } from 'clsx';
-import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
-import styles from './button.module.scss';
-import colors from '../../styles/colors.module.scss';
-import { type Colors } from '../../types';
+/* eslint-disable react/button-has-type */
+import { ButtonHTMLAttributes } from 'react';
+import cn from 'classnames';
 
-type ButtonType = 'tertiary' | 'danger' | 'secondary' | 'primary';
+import styles from './Button.module.scss';
 
-type ButtonContent = 'icon_button' | 'text_button';
+type ButtonType = 'submit' | 'button' | 'reset';
 
-type ButtonSize = 'l' | 'm' | 's';
+type ButtonSize = 'm' | 'l';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    children: ReactNode;
+    type?: ButtonType;
     size?: ButtonSize;
-    content?: ButtonContent;
-    typeBtn?: ButtonType;
-    className?: string;
-    isDisabled?: boolean;
-    width?: string;
-    color?: Colors;
+    color?: 'white' | 'green';
+    text: string;
 }
 
-export const Button: FC<ButtonProps> = (props) => {
-    const {
+export function Button({
+    text,
+    type = 'button',
+    size = 'm',
+    color = 'white',
+    className,
+    ...props
+}: ButtonProps) {
+    const buttonClassName = cn(
         className,
-        children,
-        content = 'text_button',
-        size = 'l',
-        typeBtn = 'primary',
-        isDisabled = false,
-        width,
-        color = 'white',
-        ...rest
-    } = props;
+        styles.button,
+        styles[`button--${size}`],
+        styles[`button--${color}`]
+    );
 
     return (
-        <button
-            disabled={isDisabled}
-            style={{
-                width: width ? `${width}` : undefined,
-            }}
-            className={clsx(
-                styles.container,
-                {
-                    [styles[`size_${size}`]]: size,
-                    [styles[typeBtn]]: typeBtn,
-                    [styles[content]]: content,
-                    [colors[color]]: color,
-                },
-                [className]
-            )}
-            {...rest}>
-            {children}
-        </button>
+        <>
+            {' '}
+            <button type={type} className={buttonClassName} {...props}>
+                {text}
+            </button>
+        </>
     );
-};
+}

@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API;
-
+const API_URL = 'https://jsonplaceholder.typicode.com';
 const api = axios.create({
     withCredentials: true,
     baseURL: API_URL,

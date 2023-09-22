@@ -1,0 +1,52 @@
+@import '../../app/styles/_variables';
+
+.heading {
+    color: $color-dark-blue;
+    font-size: $font-size-m;
+    line-height: $line-height-normal;
+    font-weight: 800;
+    text-align: center;
+    font-family: 'Montserrat';
+    width: 100%;
+    margin-top: 20px;
+
+    @media (max-width: 1400px) {
+        font-size: $font-size-m;
+    }
+
+    @media (max-width: 810px) {
+        font-size: $font-size-s;
+        margin-top: 20px;
+    }
+
+    @media (max-width: 480px) {
+    }
+}
+
+.section {
+    display: flex;
+    margin: 30px auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    height: 100%;
+    width: 80%;
+
+    @media (max-width: 1400px) {
+        margin: 30px auto;
+        height: 100%;
+        width: 80%;
+    }
+
+    @media (max-width: 810px) {
+        margin: 30px auto;
+        height: 100%;
+        width: 90%;
+    }
+
+    @media (max-width: 480px) {
+        margin: 0px;
+        height: 100%;
+        width: 100%;
+    }
+}

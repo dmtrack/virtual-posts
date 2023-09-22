@@ -1,11 +1,61 @@
-button {
-    background-color: burlywood;
-}
+@import '../../../app/styles/_variables';
 
-.btn {
-    color: white;
-}
+.button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: $color-dark-blue;
+    border: 2px solid;
+    transition: $effects-transition;
 
-.green {
-    color: green;
+    &:hover:enabled {
+        opacity: $effects-hover-opacity;
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:active:enabled {
+        opacity: $effects-active-opacity;
+    }
+
+    &--m {
+        padding: 4px 20px;
+        margin: auto;
+        font-size: $font-size-xs;
+        line-height: $line-height-xxs;
+        border-radius: 15px;
+    }
+
+    &--l {
+        padding: 16px 56px;
+        font-size: $font-size-s;
+        line-height: $line-height-xs;
+        border-radius: 56px;
+    }
+
+    &--regular {
+        font-weight: $font-weight-regular;
+    }
+
+    &--semibold {
+        font-weight: $font-weight-semibold;
+    }
+
+    &--bold {
+        font-weight: $font-weight-bold;
+    }
+
+    &--white {
+        background-color: $color-white;
+        border-color: $color-dark-blue;
+    }
+
+    &--green {
+        background-color: $color-green;
+        border-color: $color-green;
+    }
 }

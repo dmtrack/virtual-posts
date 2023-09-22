@@ -1,0 +1,50 @@
+@import '../../../app/styles/_variables';
+
+.section {
+    height: min-content;
+}
+
+.container {
+    margin: 0px 20px;
+    padding: 20px auto;
+    display: grid;
+    grid-template-columns: auto 1fr 3fr 1fr;
+    height: 100%;
+    gap: 20px;
+    align-items: center;
+}
+
+.id {
+    color: $color-dark-blue;
+    font-family: 'Montserrat';
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Montserrat';
+    font-size: $font-size-xxs;
+
+    /* margin-top: 25px;
+    margin-right: 40px;
+    margin-left: 40px; */
+}
+
+.post_body {
+    & .body_text {
+        color: $color-gray;
+        font-size: $font-size-xs;
+        line-height: $line-height-normal;
+        font-weight: 400;
+        font-style: normal;
+    }
+}
+
+.text {
+    color: $color-gray;
+    font-size: $font-size-xxs;
+    line-height: $line-height-normal;
+    font-weight: 400;
+    font-style: normal;
+    font-family: 'Montserrat';
+}
