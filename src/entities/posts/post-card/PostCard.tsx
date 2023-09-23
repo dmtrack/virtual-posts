@@ -1,6 +1,6 @@
 import styles from './Post.module.scss';
 import { IPost } from '../types/types';
-import { Button } from '../../../shared/ui/button/Button';
+import Button from '../../../../src/shared/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { forwardRef } from 'react';
 
@@ -13,7 +13,6 @@ export const PostCard = forwardRef<HTMLDivElement, IPostProps>(function Post(
     ref
 ) {
     const navigate = useNavigate();
-
     const postBody = (
         <>
             <div className={styles.id}>ID: {post.id}</div>

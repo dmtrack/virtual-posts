@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useGetPostsQuery } from '../../../src/entities/posts/api/postsApi';
+import { useGetPostsOnPageQuery } from '../../../src/entities/posts/api/postsApi';
 import { PostListType } from 'src/entities/posts/types/types';
 
 export const usePosts = (pageNum: number = 1) => {
-    const { data, isError, isLoading, error } = useGetPostsQuery(`${pageNum}`);
+    const { data, isError, isLoading, error } = useGetPostsOnPageQuery(
+        `${pageNum}`
+    );
     const [results, setResults] = useState<PostListType>([]);
     const [hasNextPage, setHasNextPage] = useState(false);
 
