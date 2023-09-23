@@ -1,9 +1,7 @@
 import styles from './Post.module.scss';
-import { IPost, PostListType } from '../types/types';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { useGetAllPostsQuery } from '../api/postsApi';
-import { Button } from '../../../../src/shared/ui/button/Button';
+import { Button } from '../../../../src/shared/ui';
 
 export const Post = () => {
     const id = useParams();

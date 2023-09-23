@@ -2,7 +2,7 @@ import styles from './Post.module.scss';
 import { IPost } from '../types/types';
 import { useNavigate } from 'react-router-dom';
 import { forwardRef } from 'react';
-import { Button } from '../../../../src/shared/ui/button/Button';
+import { Button } from '../../../../src/shared/ui';
 
 interface IPostProps {
     post: IPost;
