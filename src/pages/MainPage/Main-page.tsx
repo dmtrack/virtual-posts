@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import { usePosts } from './usePosts';
-import { PostList } from '../../../src/entities/posts/post-card-list/Post-list';
+import { PostList } from '../../../src/entities/posts';
 
 const MainPage = () => {
     return (
