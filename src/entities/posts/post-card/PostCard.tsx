@@ -2,34 +2,43 @@ import styles from './Post.module.scss';
 import { IPost } from '../types/types';
 import { Button } from '../../../shared/ui/button';
 import { useNavigate } from 'react-router-dom';
+import { MutableRefObject, RefObject, forwardRef } from 'react';
 
 interface IPostProps {
     post: IPost;
 }
 
-export const PostCard = ({ post }: IPostProps) => {
+export const PostCard = forwardRef<HTMLDivElement, IPostProps>(function Post(
+    { post }: IPostProps,
+    ref
+) {
     const navigate = useNavigate();
 
-    return (
+    const postBody = (
         <>
-            <div className={styles.container}>
-                <div className={styles.id}>{post.id}</div>
-                <div className={styles.title}>{post.title}</div>
-                <div className={styles.post_body}>
-                    <span className={styles.text}>{`${post.body.slice(
-                        0,
-                        100
-                    )}...`}</span>
-                </div>
-                <div>
-                    <Button
-                        text='Go'
-                        onClick={() => {
-                            navigate(`/posts/${post.id}`);
-                        }}
-                    />
-                </div>
+            <div className={styles.id}>ID: {post.id}</div>
+            <div className={styles.title}>{post.title}</div>
+            <div className={styles.body}>{`${post.body.slice(0, 100)}...`}</div>
+
+            <div>
+                <Button
+                    text='Go'
+                    onClick={() => {
+                        navigate(`/posts/${post.id}`);
+                    }}
+                />
             </div>
         </>
     );
-};
+    <div className={styles.container}></div>;
+
+    const content = ref ? (
+        <article className={styles.container} ref={ref}>
+            {postBody}
+        </article>
+    ) : (
+        <article className={styles.container}>{postBody}</article>
+    );
+
+    return content;
+});

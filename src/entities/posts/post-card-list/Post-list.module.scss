@@ -1,8 +1,17 @@
 @import '../../../app/styles/_variables';
 
-.section {
-    background-color: #fff;
+h2::first-letter,
+p::first-letter {
+    text-transform: uppercase;
+}
+
+.container {
+    text-align: center;
+    margin-bottom: 1em;
     margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .joke {
@@ -30,16 +39,15 @@
         width: 100%;
     }
 }
-.topContainer {
+.container {
     margin-top: 60px;
     display: grid;
-    grid-template-columns: repeat(3, [col] minmax(200px, auto));
-    /* grid-auto-flow: row dense; */
+    grid-template-columns: repeat(1, [col] minmax(200px, auto));
     justify-content: stretch;
     grid-gap: 20px;
 
     @media (max-width: 1500px) {
-        grid-template-columns: repeat(2, [col] minmax(200px, auto));
+        grid-template-columns: repeat(1, [col] minmax(200px, auto));
     }
 
     @media (max-width: 700px) {
@@ -107,4 +115,9 @@
     line-height: $line-height-normal;
     font-weight: 400;
     font-style: normal;
+}
+
+.app {
+    font-family: sans-serif;
+    text-align: center;
 }

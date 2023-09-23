@@ -1,87 +1,53 @@
 import { useNavigate } from 'react-router-dom';
-import { PostListType } from '../types/types';
+
 import styles from './Post-list.module.scss';
 import { PostCard } from '../post-card/PostCard';
-import { useEffect, useRef, useState } from 'react';
-import {
-    List,
-    AutoSizer,
-    CellMeasurer,
-    CellMeasurerCache,
-} from 'react-virtualized';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { usePosts } from '../../../../src/pages/MainPage/usePosts';
 
-interface IPostListProps {
-    data: PostListType;
-}
-
-export function PostList({ data }: IPostListProps) {
-    const cache = useRef(
-        new CellMeasurerCache({ fixedWidth: true, defaultHeight: 10 })
-    );
-    const navigate = useNavigate();
+export function PostList() {
+    const [pageNum, setPageNum] = useState(1);
     const [posts, setPosts] = useState([]);
+    const {
+        results: data,
+        isLoading,
+        isError,
+        error,
+        hasNextPage,
+    } = usePosts(pageNum);
+
+    let intObserver = useRef<IntersectionObserver | null>(null);
+    const lastPostRef = useCallback(
+        (post) => {
+            if (isLoading) return;
+            if (intObserver.current) intObserver.current.disconnect();
+            intObserver.current = new IntersectionObserver((posts) => {
+                if (posts[0].isIntersecting && hasNextPage) {
+                    console.log('near thee last');
+                    setPageNum((prev) => prev + 1);
+                }
+            });
+            if (post) intObserver.current.observe(post);
+        },
+        [isLoading, hasNextPage]
+    );
+
     useEffect(() => {
         setPosts(data);
     }, [data]);
 
+    const content = data.map((post, i) => {
+        if (data.length === i + 1) {
+            return <PostCard ref={lastPostRef} key={post.id} post={post} />;
+        }
+        return <PostCard key={post.id} post={post} />;
+    });
     return (
         <>
-            {posts && (
-                <div style={{ width: '100%', height: '100vh' }}>
-                    <AutoSizer>
-                        {({ width, height }) => (
-                            <List
-                                width={width}
-                                height={height}
-                                rowHeight={100}
-                                deferredMeasurementCache={cache.current}
-                                rowCount={posts.length}
-                                rowRenderer={({
-                                    key,
-                                    index,
-                                    style,
-                                    parent,
-                                }) => {
-                                    const post = posts[index];
-
-                                    return (
-                                        <CellMeasurer
-                                            key={key}
-                                            cache={cache.current}
-                                            parent={parent}
-                                            columnIndex={0}
-                                            rowIndex={index}>
-                                            <div
-                                                style={style}
-                                                className={styles.joke}
-                                                onClick={() => {
-                                                    navigate(
-                                                        `/posts/${post.id}`
-                                                    );
-                                                }}>
-                                                <PostCard post={post} />
-                                            </div>
-                                        </CellMeasurer>
-                                    );
-                                }}
-                            />
-                        )}
-                    </AutoSizer>
-                </div>
-            )}
-            {/* <div className={styles.topContainer}>
-                {posts &&
-                    posts.map((post) => (
-                        <div
-                            key={post.id}
-                            className={styles.joke}
-                            onClick={() => {
-                                navigate(`/posts/${post.id}`);
-                            }}>
-                            <PostCard post={post} />
-                        </div>
-                    ))}
-            </div> */}
+            {' '}
+            {isError && <p className='center'>Error occured...</p>}
+            {isLoading && <p className='center'>Loading more posts...</p>}
+            <div className={styles.container}>{content}</div>
         </>
     );
 }
