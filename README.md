@@ -2,7 +2,7 @@
 
 This test-task for the company shows you posts with lazy loading
 
-[deploy link](https://searchmovies-next.vercel.app)
+[deploy link](https://virtual-posts.onrender.com)
 
 ## Preview
 
